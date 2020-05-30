@@ -1,4 +1,4 @@
-# This program uses a basic linear approach for the Peak Finder
+# This program uses a basic linear approach for the Peak Finder problem
 
 def findpeak_linear(data):
     siz=len(data)
