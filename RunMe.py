@@ -1,6 +1,7 @@
 import insertion_sort
 import binary_insertion_sort
 import merge_sort
+import max_heap
 from timeit import default_timer as timer
 from numpy.random import rand
 
@@ -13,9 +14,12 @@ def runAlgo(data,algo,name=''):
     out = algo(data)
     end=timer()
     print('\n\nRunning ' + name + ' Algorithm')
-    showOutput(out)
+    #showOutput(out)
     print(f'The program took {(end-start)*1000} milli-seconds to complete.\n')
     return None
+
+def heapSort(data):
+    return max_heap.MaxHeap(data).heapSort()
 
 print('\n\n*************************************')
 print('Welcome to the Sorting Problem.')
@@ -24,9 +28,10 @@ print('Choose one of the following options... \n')
 print('1. Sort using Insertion Sort (using swaps).')
 print('2. Sort using Binary Insertion Sort.')
 print('3. Sort using Merge Sort.')
+print('4. Sort using Heap Sort.')
 
 algoOption = int(input('\nYour Choice: '))
-if algoOption not in [1,2,3]:
+if algoOption not in [1,2,3,4]:
     print('Wrong Input')
     exit()
 
@@ -51,3 +56,5 @@ elif algoOption == 2:
     runAlgo(data,binary_insertion_sort.binaryInsertionSort,"Binary Insertion Sort")
 elif algoOption == 3:
     runAlgo(data,merge_sort.mergeSort,"Merge Sort")
+elif algoOption == 4:
+    runAlgo(data,heapSort,"Heap Sort")
