@@ -2,6 +2,7 @@ import insertion_sort
 import binary_insertion_sort
 import merge_sort
 import max_heap
+import binary_search_tree
 from timeit import default_timer as timer
 from numpy.random import rand
 
@@ -21,6 +22,9 @@ def runAlgo(data,algo,name=''):
 def heapSort(data):
     return max_heap.MaxHeap(data).heapSort()
 
+def BstSort(data):
+    return binary_search_tree.BinarySearchTree().insertArray(data).inOrderTraversal()
+
 print('\n\n*************************************')
 print('Welcome to the Sorting Problem.')
 print('*************************************\n\n')
@@ -29,9 +33,10 @@ print('1. Sort using Insertion Sort (using swaps).')
 print('2. Sort using Binary Insertion Sort.')
 print('3. Sort using Merge Sort.')
 print('4. Sort using Heap Sort.')
+print('5. Sort using Binary Search Tree Sort.')
 
 algoOption = int(input('\nYour Choice: '))
-if algoOption not in [1,2,3,4]:
+if algoOption not in [1,2,3,4,5]:
     print('Wrong Input')
     exit()
 
@@ -58,3 +63,5 @@ elif algoOption == 3:
     runAlgo(data,merge_sort.mergeSort,"Merge Sort")
 elif algoOption == 4:
     runAlgo(data,heapSort,"Heap Sort")
+elif algoOption == 5:
+    runAlgo(data,BstSort,"Binary Search Tree Sort")
