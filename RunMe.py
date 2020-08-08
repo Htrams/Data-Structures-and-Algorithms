@@ -3,6 +3,7 @@ import binary_insertion_sort
 import merge_sort
 import max_heap
 import binary_search_tree
+import AVL_tree
 from timeit import default_timer as timer
 from numpy.random import rand
 
@@ -15,7 +16,7 @@ def runAlgo(data,algo,name=''):
     out = algo(data)
     end=timer()
     print('\n\nRunning ' + name + ' Algorithm')
-    #showOutput(out)
+    showOutput(out)
     print(f'The program took {(end-start)*1000} milli-seconds to complete.\n')
     return None
 
@@ -24,6 +25,9 @@ def heapSort(data):
 
 def BstSort(data):
     return binary_search_tree.BinarySearchTree().insertArray(data).inOrderTraversal()
+
+def AVLSort(data):
+    return AVL_tree.AVLtree().insertArray(data).inOrderTraversal()
 
 print('\n\n*************************************')
 print('Welcome to the Sorting Problem.')
@@ -34,9 +38,10 @@ print('2. Sort using Binary Insertion Sort.')
 print('3. Sort using Merge Sort.')
 print('4. Sort using Heap Sort.')
 print('5. Sort using Binary Search Tree Sort.')
+print('6. Sort using AVL Tree Sort.')
 
 algoOption = int(input('\nYour Choice: '))
-if algoOption not in [1,2,3,4,5]:
+if algoOption not in [1,2,3,4,5,6]:
     print('Wrong Input')
     exit()
 
@@ -50,7 +55,7 @@ Example - 1,2,3,4,5\n').split(',')
 elif inputOption == 'y' or inputOption == 'Y':
     arrayDim = int(input("Enter length of unsorted Array to generate. "))
     data=rand(arrayDim).tolist()
-    #print(f'\n The following matrix was generated {data}')
+    print(f'\n The following matrix was generated {data}')
 else:
     print('Wrong Input.')
     exit()
@@ -65,3 +70,5 @@ elif algoOption == 4:
     runAlgo(data,heapSort,"Heap Sort")
 elif algoOption == 5:
     runAlgo(data,BstSort,"Binary Search Tree Sort")
+elif algoOption == 6:
+    runAlgo(data,AVLSort,"AVL Tree Sort")
